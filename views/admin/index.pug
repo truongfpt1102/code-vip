@@ -1,0 +1,18 @@
+extends ../layouts/adminMenu
+block content
+   
+        .card-body
+            h5.card-title Manage account
+            button.btn(type='button' data-toggle='modal' data-target='#exampleModal') Go
+            // Modal
+            #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5#exampleModalLabel.modal-title Select object to create account
+                            button.close(type='button' data-dismiss='modal' aria-label='Close')
+                            span(aria-hidden='true') ×
+                        .modal-footer
+                            a(href = '/admin/createAccountAdmin') Admin
+                            a(href = '/admin/createAccountStaff') Staff
+

@@ -1,0 +1,38 @@
+html 
+    head 
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous")
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')
+    body 
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+            a.navbar-brand(href='/staff') Staff System
+            button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarNav.collapse.navbar-collapse
+            ul.navbar-nav
+                li.nav-item.active
+                    a.nav-link(href='/staff')
+                        | Home 
+                        span.sr-only (current)
+            
+        .container 
+            .row
+                .col-md-auto
+                   
+                            li.list-group-item= "Hello " + account.role + " " + account.name
+                            li.list-group-item
+                                a.btn(type='button', data-toggle='tooltip', data-placement='right', title='Tooltip on right', href='/staff/updateInformation/' + account.username) Update Infomation
+                            li.list-group-item 
+                                a.btn(type='button', data-toggle='tooltip', data-placement='right', title='Tooltip on right', href='/staff/viewAccount') Manage Accounts detail
+                            li.list-group-item 
+                                a.btn(type='button', data-toggle='tooltip', data-placement='right', title='Tooltip on right', href='/staff/viewCourseCategory') Manage Course Category
+                            li.list-group-item 
+                                a.btn(type='button', data-toggle='tooltip', data-placement='right', title='Tooltip on right', href='/staff/viewTrainer') Add trainee to course
+                            li.list-group-item
+                                form(action="/auth/logout" method="GET")
+                                    button.btn Logout
+                .col
+                    block content     
+
+    script(src='/index.js')

@@ -1,0 +1,53 @@
+extends ../layouts/adminMenu
+block content
+    
+    #accordion.mt-4
+        .card
+            #headingOne.card-header
+                h5.mb-0
+                    button.btn.btn-link(data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
+                        | Admin Account
+                    table.table.mt-4 
+                            tr 
+                                th Name
+                                th Actions 
+                            each account in accountAdmin
+                                tr
+                                    td= account.name
+                                    td 
+                                        a.btn(href='/admin/updateAccountAdmin/'+ account.username) Update 
+                                        a.btn(href='/admin/deleteAccount/'+ account.username) Delete
+                                           
+        .card
+            #headingTwo.card-header
+                h5.mb-0
+                    button.btn.btn-link.collapsed(data-toggle='collapse' data-target='#collapseTwo' aria-expanded='false' aria-controls='collapseTwo')
+                        | Staff Account
+                    table.table.mt-4 
+                            tr 
+                                th Name
+                                th Actions 
+                            each account in accountStaff
+                                tr
+                                    td= account.name
+                                    td
+                                        a.btn(href='/admin/updateAccountStaff/'+ account.username) Update 
+                                        a.btn(href='/admin/deleteAccount/'+ account.username) Delete               
+      
+
+    
+    //- a.btn.btn-primary.mt-4(href = '/admin/createAccount') Create new account 
+
+    button.btn(type='button' data-toggle='modal' data-target='#exampleModal') Create new Account
+    // Modal
+    #exampleModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#exampleModalLabel.modal-title Select object to create account
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                    span(aria-hidden='true') ×
+                .modal-footer
+                    a.btn(href = '/admin/createAccountAdmin') Admin
+                    a.btn(href = '/admin/createAccountStaff') Staff
+
